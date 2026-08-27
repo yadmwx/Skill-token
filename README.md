@@ -13,7 +13,7 @@ The maintained mainline is deliberately narrow:
 - `full`, `proprio`, `static`, and `shuffled` state modes as mechanism ablations;
 - LIBERO Object for in-domain evaluation and LIBERO-10 as a separate generalization evaluation.
 
-DiT action heads, prototype/query-key routing, expected-risk routing, and the early E04/E07 protocols are retained only for checkpoint compatibility and historical reference. They are not part of the main result table. See `docs/EXPERIMENT_SCOPE.md` and `archive/README.md`.
+DiT action heads, prototype/query-key routing, and expected-risk routing are retained only for checkpoint compatibility and historical reference. The failed E04/E07 protocol files were removed from the current tree and remain recoverable through Git history. None of these tracks belongs in the main result table. See `docs/EXPERIMENT_SCOPE.md` and `archive/README.md`.
 
 ## Important entry points
 
@@ -26,4 +26,3 @@ DiT action heads, prototype/query-key routing, expected-risk routing, and the ea
 ## Repository policy
 
 Model weights, datasets, rollouts, logs, optimizer states, and generated results are intentionally excluded from Git. Every reported run should instead record its command, source commit, checkpoint path, dataset, task IDs, seed, and evaluation count in a small text or JSON manifest.
-

@@ -19,7 +19,7 @@ The following tracks are archived and excluded from the main result table:
 - DiT and pure-DiT flow-matching action heads;
 - prototype-soft, query-key-soft, and expected-risk routing;
 - routing curricula and skill-token experiments;
-- early E04 fixed-layer and E07 context-control protocols;
+- early E04 fixed-layer and E07 context-control protocols (removed from the current tree; recoverable from Git history);
 - one-off recovery, smoke, remote-sync, and checkpoint-repair scripts.
 
 The implementation branches may remain in the model code when required to load old checkpoints. New mainline work must not add dependencies on them.
@@ -38,4 +38,3 @@ Every new result must record:
 - success count as well as success rate.
 
 Only results satisfying this provenance contract should enter paper-facing tables.
-
