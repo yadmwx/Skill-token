@@ -338,6 +338,7 @@ class GenerateConfig:
     center_crop: bool = True                         # Center crop? (if trained w/ random crop image aug)
     num_open_loop_steps: int = 8                     # Number of actions to execute open-loop before requerying policy
     unnorm_key: Union[str, Path] = ""                # Action un-normalization key
+    allow_unnorm_key_fallback: bool = False          # Opt in to cross-dataset stats (diagnostics only)
 
     load_in_8bit: bool = False                       # (For OpenVLA only) Load with 8-bit quantization
     load_in_4bit: bool = False                       # (For OpenVLA only) Load with 4-bit quantization
@@ -459,9 +460,17 @@ def check_unnorm_key(cfg: GenerateConfig, model) -> None:
     if unnorm_key not in model.norm_stats and f"{unnorm_key}_no_noops" in model.norm_stats:
         unnorm_key = f"{unnorm_key}_no_noops"
 
-    # If still not found (e.g. checkpoint trained on different dataset like libero_spatial_no_noops),
-    # fall back to the first key in norm_stats that has "action" stats so pretrained checkpoints can be evaluated.
+    # A cross-dataset fallback changes action and proprio scales.  That is useful only for
+    # explicit diagnostics; silently doing it can turn a bad checkpoint selection into a
+    # plausible-looking but invalid benchmark result.
     if unnorm_key not in model.norm_stats:
+        if not cfg.allow_unnorm_key_fallback:
+            raise AssertionError(
+                f"Action un-norm key {unnorm_key} not found in VLA `norm_stats`. "
+                f"Expected '{cfg.task_suite_name}' or '{cfg.task_suite_name}_no_noops'. "
+                f"Available keys: {list(model.norm_stats.keys())}. "
+                "Pass --allow_unnorm_key_fallback True only for a diagnostic cross-dataset run."
+            )
         fallback = None
         for k, v in model.norm_stats.items():
             if isinstance(v, dict) and "action" in v:
@@ -482,6 +491,7 @@ def check_unnorm_key(cfg: GenerateConfig, model) -> None:
 
     # Set the unnorm_key in cfg
     cfg.unnorm_key = unnorm_key
+    logger.info(f"Using action/proprio normalization key: {unnorm_key}")
 
 
 

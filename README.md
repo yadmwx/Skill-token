@@ -22,6 +22,11 @@ DiT action heads, prototype/query-key routing, and expected-risk routing are ret
 - `prismatic/models/action_heads.py`: continuous action heads and depth interfaces.
 - `prismatic/models/dense_depth_film.py`: maintained dense depth FiLM module.
 - `tests/`: tests for maintained behavior.
+- `scripts/train_libero10_h24.sh`: clean 15k-step FlowMLP/H24 LIBERO-10 training protocol.
+- `scripts/eval_libero10_h24.sh`: strict full-suite LIBERO-10 evaluation protocol.
+
+The diagnosis and recovery criteria for the earlier zero-success LIBERO-10 runs are in
+`docs/LIBERO10_RECOVERY.md`.
 
 ## Repository policy
 
