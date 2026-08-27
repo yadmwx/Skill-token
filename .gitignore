@@ -1,0 +1,85 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+*~
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Model weights, optimizer state, and generated datasets
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.h5
+*.hdf5
+*.tfrecord*
+datasets/
+/pretrained_models
+/config.json
+/vit_large_patch14_reg4_dinov2/
+
+# Generated experiment artifacts
+outputs/
+results/
+logs/
+train_logs/
+wandb/
+rollouts/
+tf-logs/
+experiment_results/
+clean_figures*/outputs/
+clean_figures*/results/
+clean_figures*/train_logs/
+clean_figures*/logs/
+*.log
+*.pid
+*.status
+*.exit_code
+*.mp4
+
+# Local mirrors, snapshots, and recovery copies
+.codex_backup_*/
+backup_*/
+*.bak
+*.bak.*
+*.bak_*
+*.before-*
+*.before_*
+*.pre_*
+*.latest_*
+*.restore
+*.orig
+*.pkl
+autodl-tmp/
+depthcurriculum_*/
+
+# Third-party simulator assets are installed separately. Keep source code.
+libero/libero/assets/
+libero/libero/init_files/
+LIBERO/libero/libero/assets/
+LIBERO/libero/libero/init_files/
+
+# Runtime-specific files
+MUJOCO_LOG.TXT
+devnull
+"$log"
