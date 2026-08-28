@@ -45,7 +45,6 @@ export PYTHONPATH="$REPO_ROOT:$REPO_ROOT/LIBERO${PYTHONPATH:+:$PYTHONPATH}"
 export PYOPENGL_PLATFORM="${PYOPENGL_PLATFORM:-osmesa}"
 export MUJOCO_GL="${MUJOCO_GL:-osmesa}"
 export TOKENIZERS_PARALLELISM=false HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 WANDB_MODE=disabled
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 cmd=(/root/miniconda3/bin/torchrun --standalone --nnodes 1 --nproc_per_node 1 vla-scripts/finetune.py
   --config_file_path "$HF_ROOT/e07_base_ckpt"
