@@ -33,7 +33,9 @@ env/
 *.h5
 *.hdf5
 *.tfrecord*
-datasets/
+/datasets/
+/preprocessing/datasets/
+/vla/datasets/
 /pretrained_models
 /config.json
 /vit_large_patch14_reg4_dinov2/
